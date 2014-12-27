@@ -1,7 +1,7 @@
 # Robo Phinx Extension
 [![Build Status](https://travis-ci.org/robertboloc/robo-phinx.svg?branch=master)](https://travis-ci.org/robertboloc/robo-phinx)
 
-Integrates Phinx tool with the Robo task runner.
+Integrates Phinx tool with the [Robo](http://robo.li/) task runner.
 
 
 ## Table of contents
