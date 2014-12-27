@@ -1,0 +1,24 @@
+{
+    "name": "robertboloc/robo-phinx",
+    "description": "Phinx integration with Robo task runner",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Robert Boloc",
+            "email": "robertboloc@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Rb\\Robo\\Task\\": "src"
+        }
+    },
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "codegyre/robo": "dev-master",
+        "phpunit/phpunit": "4.4.*",
+        "robmorgan/phinx": "0.4.*"
+    }
+}
