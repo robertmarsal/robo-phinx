@@ -10,11 +10,11 @@ Integrates Phinx tool with the Robo task runner.
 - [Configuration](#configuration)
 
 ## Installation
-Add `"robertboloc/robo-phinx": "dev-master"` to your composer.json.
+Add `"robertboloc/robo-phinx": "1.0.*"` to your composer.json.
 ```json
     {
         "require": {
-            "robertboloc/robo-phinx": "dev-master"
+            "robertboloc/robo-phinx": "1.0.*"
         }
     }
 ```
@@ -43,7 +43,7 @@ Build your tasks using the `Phinx` commands:
 
 $this->taskPhinx()
      ->init($path = '.')
-     ->getCommand();
+     ->run();
 ```
 ### Create
 ```php
@@ -51,7 +51,7 @@ $this->taskPhinx()
 
 $this->taskPhinx()
      ->create($migration)
-     ->getCommand();
+     ->run();
 ```
 ### Migrate
 ```php
@@ -59,7 +59,7 @@ $this->taskPhinx()
 
 $this->taskPhinx()
      ->migrate($target = null)
-     ->getCommand();
+     ->run();
 ```
 ### Rollback
 ```php
@@ -67,7 +67,7 @@ $this->taskPhinx()
 
 $this->taskPhinx()
      ->rollback($target = null)
-     ->getCommand();
+     ->run();
 ```
 ### Status
 ```php
@@ -75,7 +75,7 @@ $this->taskPhinx()
 
 $this->taskPhinx()
      ->status()
-     ->getCommand();
+     ->run();
 ```
 
 ## Configuration
@@ -89,7 +89,7 @@ You can apply configuration parameters to all the commands using the configurati
 $this->taskPhinx()
      ->config($file = 'phinx.yml')
      ->status()
-     ->getCommand();
+     ->run();
 ```
 
 ### Parser 
@@ -99,7 +99,7 @@ $this->taskPhinx()
 $this->taskPhinx()
      ->parser($format = 'yaml')
      ->status()
-     ->getCommand();
+     ->run();
 ```
 
 ### Environment
@@ -109,7 +109,7 @@ $this->taskPhinx()
 $this->taskPhinx()
      ->environment($environment = 'development')
      ->status()
-     ->getCommand();
+     ->run();
 ```
 
 Note that all the commands have their default arguments in parenthesis. If no argument is specified the command takes no argument.
