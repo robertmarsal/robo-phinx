@@ -1,11 +1,10 @@
 <?php
 namespace Rb\Robo\Task;
 
-use Robo\Output;
-use Robo\Task\Shared\Executable,
-    Robo\Task\Shared\TaskInterface,
-    Robo\Task\Shared\TaskException,
-    Robo\Task\Shared\CommandInterface;
+use Robo\Task\BaseTask;
+use Robo\Common\ExecOneCommand;
+use Robo\Contract\CommandInterface;
+use Robo\Contract\PrintedInterface;
 
 trait Phinx
 {
@@ -26,11 +25,10 @@ trait Phinx
  * ?>
  * ```
  */
-class PhinxTask
-    implements TaskInterface, CommandInterface
+class PhinxTask extends BaseTask
+    implements CommandInterface, PrintedInterface
 {
-    use Output,
-        Executable;
+    use ExecOneCommand;
 
     protected $command;
     protected $action;
