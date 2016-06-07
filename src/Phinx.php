@@ -107,6 +107,12 @@ class PhinxTask extends BaseTask
         return $this;
     }
 
+    public function template($template)
+    {
+        $this->option('-t', $template);
+        return $this;
+    }
+
     public function getCommand()
     {
         return "{$this->command} {$this->action} {$this->arguments}";

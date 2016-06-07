@@ -215,6 +215,28 @@ class PhinxTest extends PHPUnit_Framework_TestCase
         ];
     }
 
+    /**
+     * @dataProvider templateDataProvider
+     */
+    public function testTemplateCompositionIsCorrect($template, $equals)
+    {
+        $command =
+            $this->taskPhinx('phinx')
+                 ->template($template)
+                 ->getCommand();
+        $this->assertEquals($equals, $command);
+    }
+
+    public static function templateDataProvider()
+    {
+        return [
+            [
+                'Template.php', 'phinx   -t Template.php',
+                '/tmp/test/Test.php', 'phinx   -t /tmp/test/Test.php',
+            ],
+        ];
+    }
+
     public function testGetCommandCompositionIsCorrect()
     {
         $command =
