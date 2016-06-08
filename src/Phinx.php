@@ -28,6 +28,8 @@ trait Phinx
 class PhinxTask extends BaseTask
     implements CommandInterface, PrintedInterface
 {
+    use Commands;
+    use Options;
     use ExecOneCommand;
 
     protected $command;
@@ -49,68 +51,6 @@ class PhinxTask extends BaseTask
         } else {
             throw new TaskException(__CLASS__,"Neither local phinx nor global composer installation found");
         }
-    }
-
-    public function init($path = '.')
-    {
-        $this->action = "init $path";
-        return $this;
-    }
-
-    public function create($migration)
-    {
-        $this->action = "create $migration";
-        return $this;
-    }
-
-    public function migrate($target = null)
-    {
-        if ($target !== null) {
-            $this->option('-t', $target);
-        }
-
-        $this->action = 'migrate';
-        return $this;
-    }
-
-    public function rollback($target = null)
-    {
-        if ($target !== null) {
-            $this->option('-t', $target);
-        }
-
-        $this->action = 'rollback';
-        return $this;
-    }
-
-    public function status()
-    {
-        $this->action = 'status';
-        return $this;
-    }
-
-    public function config($file = 'phinx.yml')
-    {
-        $this->option('-c', $file);
-        return $this;
-    }
-
-    public function parser($format = 'yaml')
-    {
-        $this->option('-p', $format);
-        return $this;
-    }
-
-    public function environment($environment = 'development')
-    {
-        $this->option('-e', $environment);
-        return $this;
-    }
-
-    public function template($template)
-    {
-        $this->option('-t', $template);
-        return $this;
     }
 
     public function getCommand()
