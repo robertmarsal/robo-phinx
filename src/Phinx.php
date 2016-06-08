@@ -8,6 +8,11 @@ use Robo\Contract\PrintedInterface;
 
 trait Phinx
 {
+    /**
+     * @param string|null $pathToPhinx
+     *
+     * @return PhinxTask
+     */
     protected function taskPhinx($pathToPhinx = null)
     {
         return new PhinxTask($pathToPhinx);
@@ -35,6 +40,11 @@ class PhinxTask extends BaseTask
     protected $command;
     protected $action;
 
+    /**
+     * @param string|null $pathToPhinx
+     *
+     * @throws TaskException
+     */
     public function __construct($pathToPhinx = null)
     {
         if ($pathToPhinx) {
@@ -53,11 +63,21 @@ class PhinxTask extends BaseTask
         }
     }
 
+    /**
+     * Returns the command ready to be executed.
+     *
+     * @return string
+     */
     public function getCommand()
     {
         return "{$this->command} {$this->action} {$this->arguments}";
     }
 
+    /**
+     * Executes the command.
+     *
+     * @return \Robo\Result
+     */
     public function run()
     {
         $this->printTaskInfo('Running Phinx '. $this->arguments);

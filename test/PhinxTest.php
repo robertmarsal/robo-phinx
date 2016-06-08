@@ -17,13 +17,16 @@ class PhinxTest extends PHPUnit_Framework_TestCase
     {
         $command =
             $this->taskPhinx('phinx')
-                ->init()
-                ->getCommand();
+                 ->init()
+                 ->getCommand();
         $this->assertEquals('phinx init . ', $command);
     }
 
     /**
      * @dataProvider initDataProvider
+     *
+     * @param string $path
+     * @param string $equals
      */
     public function testInitCompositionIsCorrect($path, $equals)
     {
@@ -34,6 +37,9 @@ class PhinxTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($equals, $command);
     }
 
+    /**
+     * @return array
+     */
     public static function initDataProvider()
     {
         return [
@@ -46,6 +52,9 @@ class PhinxTest extends PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider createDataProvider
+     *
+     * @param string $migration
+     * @param string $equals
      */
     public function testCreateCompositionIsCorrect($migration, $equals)
     {
@@ -56,6 +65,9 @@ class PhinxTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($equals, $command);
     }
 
+    /**
+     * @return array
+     */
     public static function createDataProvider()
     {
         return [
@@ -68,6 +80,9 @@ class PhinxTest extends PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider migrateDataProvider
+     *
+     * @param string $target
+     * @param string $equals
      */
     public function testMigrateCompositionIsCorrect($target, $equals)
     {
@@ -78,6 +93,9 @@ class PhinxTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($equals, $command);
     }
 
+    /**
+     * @return array
+     */
     public static function migrateDataProvider()
     {
         return [
@@ -91,6 +109,9 @@ class PhinxTest extends PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider rollbackDataProvider
+     *
+     * @param string $target
+     * @param string $equals
      */
     public function testRollbackCompositionIsCorrect($target, $equals)
     {
@@ -101,6 +122,9 @@ class PhinxTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($equals, $command);
     }
 
+    /**
+     * @return array
+     */
     public static function rollbackDataProvider()
     {
         return [
@@ -132,6 +156,9 @@ class PhinxTest extends PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider configDataProvider
+     *
+     * @param string $file
+     * @param string $equals
      */
     public function testConfigCompositionIsCorrect($file, $equals)
     {
@@ -142,6 +169,9 @@ class PhinxTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($equals, $command);
     }
 
+    /**
+     * @return array
+     */
     public static function configDataProvider()
     {
         return [
@@ -163,6 +193,9 @@ class PhinxTest extends PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider parserDataProvider
+     *
+     * @param string $format
+     * @param string $equals
      */
     public function testParserCompositionIsCorrect($format, $equals)
     {
@@ -173,6 +206,9 @@ class PhinxTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($equals, $command);
     }
 
+    /**
+     * @return array
+     */
     public static function parserDataProvider()
     {
         return [
@@ -194,6 +230,9 @@ class PhinxTest extends PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider environmentDataProvider
+     *
+     * @param string $environment
+     * @param string $equals
      */
     public function testEnvironmentCompositionIsCorrect($environment, $equals)
     {
@@ -204,6 +243,9 @@ class PhinxTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($equals, $command);
     }
 
+    /**
+     * @return array
+     */
     public static function environmentDataProvider()
     {
         return [
@@ -217,6 +259,9 @@ class PhinxTest extends PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider templateDataProvider
+     *
+     * @param string $template
+     * @param string $equals
      */
     public function testTemplateCompositionIsCorrect($template, $equals)
     {
@@ -227,6 +272,9 @@ class PhinxTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($equals, $command);
     }
 
+    /**
+     * @return array
+     */
     public static function templateDataProvider()
     {
         return [
@@ -248,6 +296,3 @@ class PhinxTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('phinx status  -e production -p yaml', $command);
     }
 }
-
-
-
