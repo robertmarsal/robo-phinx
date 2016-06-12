@@ -63,4 +63,13 @@ trait Commands
         $this->action = 'status';
         return $this;
     }
+
+    /**
+     * @return PhinxTask
+     */
+    public function test()
+    {
+        $this->action = 'test';
+        return $this;
+    }
 }
