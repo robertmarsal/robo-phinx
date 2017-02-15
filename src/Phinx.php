@@ -8,6 +8,11 @@ use Robo\Contract\PrintedInterface;
 
 trait Phinx
 {
+    /**
+     * @param string|null $pathToPhinx
+     *
+     * @return PhinxTask
+     */
     protected function taskPhinx($pathToPhinx = null)
     {
         return new PhinxTask($pathToPhinx);
@@ -28,11 +33,18 @@ trait Phinx
 class PhinxTask extends BaseTask
     implements CommandInterface, PrintedInterface
 {
+    use Commands;
+    use Options;
     use ExecOneCommand;
 
     protected $command;
     protected $action;
 
+    /**
+     * @param string|null $pathToPhinx
+     *
+     * @throws TaskException
+     */
     public function __construct($pathToPhinx = null)
     {
         if ($pathToPhinx) {
@@ -51,67 +63,21 @@ class PhinxTask extends BaseTask
         }
     }
 
-    public function init($path = '.')
-    {
-        $this->action = "init $path";
-        return $this;
-    }
-
-    public function create($migration)
-    {
-        $this->action = "create $migration";
-        return $this;
-    }
-
-    public function migrate($target = null)
-    {
-        if ($target !== null) {
-            $this->option('-t', $target);
-        }
-
-        $this->action = 'migrate';
-        return $this;
-    }
-
-    public function rollback($target = null)
-    {
-        if ($target !== null) {
-            $this->option('-t', $target);
-        }
-
-        $this->action = 'rollback';
-        return $this;
-    }
-
-    public function status()
-    {
-        $this->action = 'status';
-        return $this;
-    }
-
-    public function config($file = 'phinx.yml')
-    {
-        $this->option('-c', $file);
-        return $this;
-    }
-
-    public function parser($format = 'yaml')
-    {
-        $this->option('-p', $format);
-        return $this;
-    }
-
-    public function environment($environment = 'development')
-    {
-        $this->option('-e', $environment);
-        return $this;
-    }
-
+    /**
+     * Returns the command ready to be executed.
+     *
+     * @return string
+     */
     public function getCommand()
     {
         return "{$this->command} {$this->action} {$this->arguments}";
     }
 
+    /**
+     * Executes the command.
+     *
+     * @return \Robo\Result
+     */
     public function run()
     {
         $this->printTaskInfo('Running Phinx '. $this->arguments);

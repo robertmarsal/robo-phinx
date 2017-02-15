@@ -3,7 +3,7 @@
 [![Packagist](https://img.shields.io/packagist/v/robertboloc/robo-phinx.svg?style=flat)](https://packagist.org/packages/robertboloc/robo-phinx)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/robertboloc/robo-phinx/blob/master/LICENSE.md)
 
-Integrates Phinx tool with the [Robo](http://robo.li/) task runner.
+Integrates [Phinx](http://docs.phinx.org) tool with the [Robo](http://robo.li/) task runner.
 
 
 ## Table of contents
