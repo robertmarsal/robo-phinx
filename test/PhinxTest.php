@@ -8,6 +8,11 @@ class PhinxTest extends PHPUnit_Framework_TestCase
 {
     use Phinx;
 
+    protected function task($class, $pathToPhinx = null)
+    {
+        return new $class($pathToPhinx);
+    }
+
     public function testTraitExists()
     {
         $this->assertTrue(method_exists($this, 'taskPhinx'));
