@@ -10,7 +10,7 @@ trait Phinx
 {
     protected function taskPhinx($pathToPhinx = null)
     {
-        return new PhinxTask($pathToPhinx);
+        return $this->task(PhinxTask::class, $pathToPhinx);
     }
 }
 
