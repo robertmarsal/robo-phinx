@@ -12,11 +12,11 @@ Integrates Phinx tool with the [Robo](http://robo.li/) task runner.
 - [Configuration](#configuration)
 
 ## Installation
-Add `"robertboloc/robo-phinx": "1.1.*"` to your composer.json.
+Add `"robertboloc/robo-phinx": "^1.2"` to your composer.json.
 ```json
     {
         "require": {
-            "robertboloc/robo-phinx": "1.1.*"
+            "robertboloc/robo-phinx": "^1.2"
         }
     }
 ```
